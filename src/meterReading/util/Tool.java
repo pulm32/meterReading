@@ -34,7 +34,7 @@ public class Tool {
     }
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception{ 
         System.out.println(Date2Str(new Date(), "yyyy-MM-dd"));
         System.out.println(Date2Str(new Date(), "yyyyMMddHHmmss"));
         Date date=str2Date(" 2016-02-01 ", " yyyy-MM-dd ");

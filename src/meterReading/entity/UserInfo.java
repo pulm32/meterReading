@@ -9,10 +9,10 @@ public class UserInfo {
     private String phone;
     private String mobilephone;
     private String workunit;
-    private boolean permanent;
-    private boolean valid;
+    private String permanent;
+    private int valid;
     public UserInfo(){}
-    public UserInfo(String id,String name,int building,String door,String phone ,String mobilephone,String workunit,boolean permanent,boolean valid){
+    public UserInfo(String id,String name,int building,String door,String phone ,String mobilephone,String workunit,String permanent,int valid){
         this.id = id;
         this.name = name;
         this.building = building;
@@ -79,19 +79,19 @@ public class UserInfo {
         this.workunit = workunit;
     }
 
-    public boolean getPermanent() {
+    public String getPermanent() {
         return permanent;
     }
 
-    public void setPermanent(boolean permanent) {
+    public void setPermanent(String permanent) {
         this.permanent = permanent;
     }
 
-    public boolean isValid() {
+    public int getValid() {
         return valid;
     }
 
-    public void setValid(boolean valid) {
+    public void setValid(int valid) {
         this.valid = valid;
     }
 }

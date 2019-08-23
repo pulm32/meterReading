@@ -2,9 +2,9 @@ package meterReading.dao;
 import java.sql.*;
 public class baseDao {
     public final static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";           // 数据库驱动
-    public final static String url    = "jdbc:sqlserver://localhost:1433;DatabaseName=book_shop3";     // url
-    public final static String dbName = "";                                                  // 数据库用户名
-    public final static String dbPass = "";                                                     // 数据库密码
+    public final static String url    = "jdbc:sqlserver://localhost:1433;DatabaseName=meterreader";     // url
+    public final static String dbName = "sa";                                                  // 数据库用户名
+    public final static String dbPass = "sms";                                                     // 数据库密码
 
     //得到数据库连接
     public Connection getConn() throws ClassNotFoundException, SQLException{
