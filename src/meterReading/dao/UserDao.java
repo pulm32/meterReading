@@ -90,4 +90,34 @@ public class UserDao extends baseDao{
         return list;
     }
 
+    //按楼号和门牌号查询
+    public UserInfo getuserByBuildingandDoor(int building, String door){
+        UserInfo userInfo=new UserInfo();
+        String sql = "select * from USERINFO  where building="+building+" and door="+door;
+        try {
+            conn = this.getConn();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                UserInfo user = new UserInfo();
+                user.setId(rs.getString("id"));
+                user.setName(rs.getString("name"));
+                user.setBuilding(rs.getInt("building"));
+                user.setDoor(rs.getString("door"));
+                user.setPhone(rs.getString("phone"));
+                user.setMobilephone(rs.getString("mobilephone"));
+                user.setWorkunit(rs.getString("workunit"));
+                user.setPermanent(rs.getString("permanent"));
+                user.setValid(rs.getInt("valid"));
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally{
+            this.closeAll(conn, pstmt, rs);
+        }
+        return userInfo;
+    }
+
 }

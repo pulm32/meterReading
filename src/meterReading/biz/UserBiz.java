@@ -20,4 +20,6 @@ public class UserBiz  {
 
     //按楼号查找用户信息
     public List<UserInfo> getUserByBuilding(int building){return userDao.getUserByBuilding(building);}
+
+    public UserInfo getuserByBuildingandDoor(int building,String door){return userDao.getuserByBuildingandDoor(building,door);}
 }
