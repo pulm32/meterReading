@@ -41,10 +41,11 @@ public class UserDao extends baseDao{
 
     //新建
     public int insert(UserInfo userInfo){
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
         StringBuffer sbSql = new StringBuffer("insert into UserInfo(id,name,building,door,phone,mobilephone,");
         sbSql.append("workunit,permanent,valid)");
         sbSql.append("values(?,?,?,?,?,?,?,?,1)");
-        Object[] param = {userInfo.getId(),userInfo.getName(),userInfo.getBuilding(),userInfo.getDoor(),userInfo.getPhone(),userInfo.getMobilephone(),
+        Object[] param = {uuid,userInfo.getName(),userInfo.getBuilding(),userInfo.getDoor(),userInfo.getPhone(),userInfo.getMobilephone(),
                 userInfo.getWorkunit(),userInfo.getPermanent()};
         return super.executeSQL(sbSql.toString(), param);
     }
@@ -53,7 +54,7 @@ public class UserDao extends baseDao{
     public int save(UserInfo userInfo){
         StringBuffer sbSql = new StringBuffer("update UserInfo set name=?,building=?,door=?,phone=?,mobilephone=?,");
         sbSql.append("workunit=?,permanent=?,valid=?");
-        sbSql.append("where id="+userInfo.getId());
+        sbSql.append(" where id='"+userInfo.getId()+"'");
         Object[] param = {userInfo.getName(),userInfo.getBuilding(),userInfo.getDoor(),userInfo.getPhone(),userInfo.getMobilephone(),
                 userInfo.getWorkunit(),userInfo.getPermanent(),userInfo.getValid()};
         return super.executeSQL(sbSql.toString(), param);
@@ -92,14 +93,14 @@ public class UserDao extends baseDao{
 
     //按楼号和门牌号查询
     public UserInfo getuserByBuildingandDoor(int building, String door){
-        UserInfo userInfo=new UserInfo();
-        String sql = "select * from USERINFO  where building="+building+" and door="+door;
+        UserInfo user=new UserInfo();
+        String sql = "select * from USERINFO  where building="+building+" and door='"+door+"'";
         try {
             conn = this.getConn();
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             while(rs.next()){
-                UserInfo user = new UserInfo();
+                //UserInfo user = new UserInfo();
                 user.setId(rs.getString("id"));
                 user.setName(rs.getString("name"));
                 user.setBuilding(rs.getInt("building"));
@@ -117,7 +118,60 @@ public class UserDao extends baseDao{
         } finally{
             this.closeAll(conn, pstmt, rs);
         }
-        return userInfo;
+        return user;
     }
+
+    //按id查找用户
+    public UserInfo getUserById(String id){
+        UserInfo user=new UserInfo();
+        String sql = "select * from USERINFO  where id='"+id+"'";
+        try {
+            conn = this.getConn();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                user = new UserInfo();
+                user.setId(rs.getString("id"));
+                user.setName(rs.getString("name"));
+                user.setBuilding(rs.getInt("building"));
+                user.setDoor(rs.getString("door"));
+                user.setPhone(rs.getString("phone"));
+                user.setMobilephone(rs.getString("mobilephone"));
+                user.setWorkunit(rs.getString("workunit"));
+                user.setPermanent(rs.getString("permanent"));
+                user.setValid(rs.getInt("valid"));
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally{
+            this.closeAll(conn, pstmt, rs);
+        }
+        return user;
+    }
+
+    public int getCount() {
+        String sql = "select count(id) from userinfo";
+        int count = 0;
+        try {
+            conn = this.getConn();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                count=rs.getInt(1);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally{
+            this.closeAll(conn, pstmt, rs);
+        }
+        return count;
+    }
+
+
+
 
 }

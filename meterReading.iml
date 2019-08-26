@@ -20,6 +20,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="sqljdbc42" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5" level="application_server_libraries" />
+    <orderEntry type="library" exported="" name="Tomcat 8.5" level="application_server_libraries" />
   </component>
 </module>
