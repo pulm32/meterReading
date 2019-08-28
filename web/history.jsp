@@ -137,7 +137,10 @@ window.scrollTo(0, 1);
 
                         </div>
                         <div>
-                            <td>户主：<%=userInfo.getName()+"  "%> <%=userInfo.getBuilding()%>楼<%=userInfo.getDoor()%>号</td>
+                            <form>
+                                户主：<%=userInfo.getName()+"  "%> <br><%=userInfo.getBuilding()%>楼<%=userInfo.getDoor()%>号
+                            </form>
+
 
                             <div class="grid1_of_4">
                                 <table class="table table-striped">

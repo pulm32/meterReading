@@ -159,9 +159,9 @@
                                     <thead>
                                     <tr>
                                         <th>楼号</th>
-                                        <th>门牌号</th>
+                                        <th>门牌</th>
                                         <th>户主</th>
-                                        <th>电表示数</th>
+                                        <th>电表</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -187,9 +187,9 @@
                                     <thead>
                                     <tr>
                                         <th>楼号</th>
+                                        <th>门牌</th>
                                         <th>户主</th>
-                                        <th>时间</th>
-                                        <th>电表示数</th>
+                                        <th>水表</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -214,9 +214,9 @@
                                     <thead>
                                     <tr>
                                         <th>楼号</th>
+                                        <th>门牌</th>
                                         <th>户主</th>
-                                        <th>时间</th>
-                                        <th>电表示数</th>
+                                        <th>煤气</th>
                                     </tr>
                                     </thead>
                                     <tbody>

@@ -159,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="header_top">
                         <div class="top_right">
                             <ul>
-                                <li><a href="backstage/back_login.jsp">管理员登录</a></li>
+                                <li><a href="backstage/back_login.jsp"></a></li>
                             </ul>
                         </div>
                         <div class="top_left">
